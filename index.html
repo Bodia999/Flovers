@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Цветочки </title>
+    <title>Hentasis - Визуальный Шаблон с Картинками</title>
     <style>
         /* Общие визуальные настройки темы */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -69,20 +69,23 @@
             transform: translateY(-4px); 
             border-color: #ff3366; 
         }
-        .poster-placeholder { 
-            width: 100%; 
-            height: 310px; 
-            background: linear-gradient(45deg, #232329, #16161a); 
+        
+        /* Контейнер для картинки и бейджа */
+        .poster-container {
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%;
+            height: 310px;
+            background-color: #1f1f24; /* Цвет фона пока грузится картинка */
         }
-        .poster-placeholder::after {
-            content: "Постер";
-            color: #444;
-            font-size: 16px;
+        
+        /* Стили самой картинки */
+        .poster-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Заполняет блок без искажения пропорций */
+            display: block;
         }
+
         .card-badge {
             position: absolute;
             top: 10px;
@@ -93,6 +96,7 @@
             font-size: 11px;
             font-weight: bold;
             border-radius: 3px;
+            z-index: 2;
         }
         .card-info { padding: 12px; }
         .card-title { 
@@ -173,14 +177,6 @@
             .sidebar { order: 2; }
             .content-grid { order: 1; }
         }
-
-        .media-card img {
-    width: 100%;
-    height: 310px;
-    object-fit: cover; /* Картинка заполнит блок без искажения пропорций */
-    display: block;
-}
-
     </style>
 </head>
 <body>
@@ -192,8 +188,8 @@
             <ul class="nav-menu">
                 <li><a href="#">Главная</a></li>
                 <li><a href="#">Цветочки</a></li>
-                <li><a href="#">Почему показываются цветочки?</a></li>
-                <li><a href="#">Что не нужно делать чтобы не быть цветочком?</a></li>
+                <li><a href="#">Почему цветочки?</a></li>
+                <li><a href="#">Как не быть уветочком?</a></li>
             </ul>
         </div>
     </header>
@@ -206,54 +202,50 @@
             
             <!-- Карточка 1 -->
             <div class="media-card">
-                <div style="position: relative;"> <!-- Контейнер для картинки и плашки -->
-        <!-- Укажите путь к вашей картинке в src -->
-        <img src="https://bodia999.github.io/Forgexis/verka.jpg" alt="Постер"> 
-    </div>
+                <div class="poster-container">
                     <span class="card-badge">Популярное!</span>
+                    <!-- Чтобы вставить свою картинку, замените ссылку в src="..." -->
+                    <img src="https://bodia999.github.io/Forgexis/verka.jpg" alt="Постер 1">
                 </div>
                 <div class="card-info">
-                    <div class="card-title"><a href="#">Вероника </a></div>
+                    <div class="card-title"><a href="#">Верка</a></div>
                     <div class="card-meta">Шлюха</div>
                 </div>
-            
+            </div>
 
             <!-- Карточка 2 -->
             <div class="media-card">
-                <div style="position: relative;"> <!-- Контейнер для картинки и плашки -->
-        <!-- Укажите путь к вашей картинке в src -->
-        <img src="https://picsum.photos" alt="Постер"> 
-    </div>
+                <div class="poster-container">
                     <span class="card-badge">Новое</span>
+                    <img src="https://bodia999.github.io/Forgexis/adept.jpg" alt="Постер 2">
                 </div>
                 <div class="card-info">
                     <div class="card-title"><a href="#">Адепт</a></div>
                     <div class="card-meta">Пидорас</div>
                 </div>
-            
+            </div>
 
             <!-- Карточка 3 -->
             <div class="media-card">
-               <div style="position: relative;"> <!-- Контейнер для картинки и плашки -->
-        <!-- Укажите путь к вашей картинке в src -->
-        <img src="https://picsum.photos" alt="Постер"> 
-    </div></div>
+                <div class="poster-container">
+                    <img src="https://bodia999.github.io/Forgexis/aluk.jpg" alt="Постер 3">
+                </div>
                 <div class="card-info">
                     <div class="card-title"><a href="#">Алукард</a></div>
                     <div class="card-meta">Секси еблан</div>
                 </div>
-            
+            </div>
 
             <!-- Карточка 4 -->
             <div class="media-card">
-    <div style="position: relative;"> <!-- Контейнер для картинки и плашки -->
-        <!-- Укажите путь к вашей картинке в src -->
-        <img src="https://picsum.photos" alt="Постер"> 
-    </div></div>
-    <div class="card-info">
-        <div class="card-title"><a href="#">Алукард</a></div>
-        <div class="card-meta">Жополиз</div>
-    </div>
+                <div class="poster-container">
+                    <img src="https://picsum.photos" alt="Постер 4">
+                </div>
+                <div class="card-info">
+                    <div class="card-title"><a href="#">Фониус Персон</a></div>
+                    <div class="card-meta">Жополиз</div>
+                </div>
+            </div>
 
             <!-- Навигация -->
             <div class="pagination">
@@ -265,25 +257,25 @@
             </div>
 
         </main>
-</div>
+
         <!-- Сайдбар -->
         <aside class="sidebar">
             
             <!-- Виджет Категорий -->
             <div class="widget">
-                <div class="widget-title">Жанры</div>
+                <div class="widget-title">Стата</div>
                 <ul class="widget-list">
-                    <li><a href="#">Обман</a> <span class="count-badge">(142)</span></li>
-                    <li><a href="#">Показ</a> <span class="count-badge">(98)</span></li>
-                    <li><a href="#">Лох</a> <span class="count-badge">(215)</span></li>
-                    <li><a href="#">Шалавы</a> <span class="count-badge">(64)</span></li>
+                    <li><a href="#">Обманщики</a> <span class="count-badge">(142)</span></li>
+                    <li><a href="#">Долбоебы</a> <span class="count-badge">(98)</span></li>
+                    <li><a href="#">Мошеники</a> <span class="count-badge">(215)</span></li>
+                    <li><a href="#">Пиздуны</a> <span class="count-badge">(64)</span></li>
                 </ul>
             </div>
 
             <!-- Виджет инфо -->
             <div class="widget">
                 <div class="widget-title">О проекте</div>
-                <p style="color: #888; font-size: 13px;">Это сайт с цветочками, и все.</p>
+                <p style="color: #888; font-size: 13px;">Тут просто показывают цветочки.</p>
             </div>
 
         </aside>
@@ -292,7 +284,7 @@
 
     <!-- Подвал -->
     <footer>
-        <p>© Бодя и Свайп решают все</p>
+        <p>© Бодя и Свайп решают всё.</p>
     </footer>
 
 </body>

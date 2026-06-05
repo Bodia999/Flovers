@@ -173,6 +173,14 @@
             .sidebar { order: 2; }
             .content-grid { order: 1; }
         }
+
+        .media-card img {
+    width: 100%;
+    height: 310px;
+    object-fit: cover; /* Картинка заполнит блок без искажения пропорций */
+    display: block;
+}
+
     </style>
 </head>
 <body>
@@ -198,8 +206,11 @@
             
             <!-- Карточка 1 -->
             <div class="media-card">
-                <div class="poster-placeholder">
-                    <span class="card-badge">HD</span>
+                <div style="position: relative;"> <!-- Контейнер для картинки и плашки -->
+        <!-- Укажите путь к вашей картинке в src -->
+        <img src="https://picsum.photos" alt="Постер"> 
+    </div>
+                    <span class="card-badge">Популярное!</span>
                 </div>
                 <div class="card-info">
                     <div class="card-title"><a href="#">Вероника </a></div>
@@ -209,7 +220,10 @@
 
             <!-- Карточка 2 -->
             <div class="media-card">
-                <div class="poster-placeholder">
+                <div style="position: relative;"> <!-- Контейнер для картинки и плашки -->
+        <!-- Укажите путь к вашей картинке в src -->
+        <img src="https://picsum.photos" alt="Постер"> 
+    </div>
                     <span class="card-badge">Новое</span>
                 </div>
                 <div class="card-info">
@@ -220,7 +234,10 @@
 
             <!-- Карточка 3 -->
             <div class="media-card">
-                <div class="poster-placeholder"></div>
+               <div style="position: relative;"> <!-- Контейнер для картинки и плашки -->
+        <!-- Укажите путь к вашей картинке в src -->
+        <img src="https://picsum.photos" alt="Постер"> 
+    </div>
                 <div class="card-info">
                     <div class="card-title"><a href="#">Алукард</a></div>
                     <div class="card-meta">Секси еблан</div>
@@ -229,12 +246,16 @@
 
             <!-- Карточка 4 -->
             <div class="media-card">
-                <div class="poster-placeholder"></div>
-                <div class="card-info">
-                    <div class="card-title"><a href="#">Фониус Персон</a></div>
-                    <div class="card-meta">Жополиз</div>
-                </div>
-            </div>
+    <div style="position: relative;"> <!-- Контейнер для картинки и плашки -->
+        <!-- Укажите путь к вашей картинке в src -->
+        <img src="https://picsum.photos" alt="Постер"> 
+    </div>
+    <div class="card-info">
+        <div class="card-title"><a href="#">Алукард</a></div>
+        <div class="card-meta">Жополиз</div>
+    </div>
+</div>
+
 
             <!-- Навигация -->
             <div class="pagination">

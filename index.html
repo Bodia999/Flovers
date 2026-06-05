@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hentasis - Визуальный Шаблон</title>
+    <style>
+        /* Общие визуальные настройки темы */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #0f0f12; 
+            color: #eeeeee; 
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        a { color: #ff3366; text-decoration: none; transition: color 0.2s; }
+        a:hover { color: #ff6699; }
+
+        /* Шапка сайта */
+        header { 
+            background-color: #16161a; 
+            border-bottom: 2px solid #ff3366; 
+            padding: 15px 20px;
+            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.15);
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { 
+            font-size: 24px; 
+            font-weight: 800; 
+            color: #ff3366; 
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .nav-menu { display: flex; list-style: none; gap: 20px; }
+        .nav-menu a { color: #ccc; font-weight: 600; }
+        .nav-menu a:hover { color: #ff3366; }
+
+        /* Главный двухколоночный контейнер */
+        .main-container { 
+            max-width: 1200px; 
+            margin: 30px auto; 
+            display: grid; 
+            grid-template-columns: 1fr 320px; 
+            gap: 25px; 
+            padding: 0 20px; 
+        }
+
+        /* Сетка постов (Основная часть) */
+        .content-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
+            gap: 20px; 
+        }
+        .media-card { 
+            background-color: #16161a; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            border: 1px solid #232329;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .media-card:hover { 
+            transform: translateY(-4px); 
+            border-color: #ff3366; 
+        }
+        .poster-placeholder { 
+            width: 100%; 
+            height: 310px; 
+            background: linear-gradient(45deg, #232329, #16161a); 
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .poster-placeholder::after {
+            content: "Постер";
+            color: #444;
+            font-size: 16px;
+        }
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff3366;
+            color: #fff;
+            padding: 3px 8px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+        .card-info { padding: 12px; }
+        .card-title { 
+            font-size: 14px; 
+            font-weight: 600; 
+            margin-bottom: 6px; 
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card-meta { font-size: 12px; color: #777; }
+
+        /* Боковая панель (Сайдбар) */
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .widget { 
+            background-color: #16161a; 
+            border-radius: 8px; 
+            padding: 20px; 
+            border: 1px solid #232329;
+        }
+        .widget-title { 
+            font-size: 16px; 
+            font-weight: 700; 
+            color: #ff3366; 
+            margin-bottom: 15px; 
+            border-bottom: 1px solid #232329;
+            padding-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .widget-list { list-style: none; }
+        .widget-list li { 
+            padding: 8px 0; 
+            border-bottom: 1px solid #1f1f24; 
+            display: flex;
+            justify-content: space-between;
+        }
+        .widget-list li:last-child { border-bottom: none; }
+        .widget-list a { color: #bbb; }
+        .widget-list a:hover { color: #ff3366; }
+        .count-badge { color: #555; font-size: 12px; }
+
+        /* Постраничная навигация (Пагинация) */
+        .pagination {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .page-num {
+            background-color: #16161a;
+            border: 1px solid #232329;
+            color: #ccc;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .page-num.active, .page-num:hover {
+            background-color: #ff3366;
+            border-color: #ff3366;
+            color: #fff;
+        }
+
+        /* Подвал */
+        footer { 
+            background-color: #0b0b0d; 
+            border-top: 1px solid #16161a; 
+            padding: 20px; 
+            text-align: center; 
+            color: #555; 
+            font-size: 12px;
+            margin-top: 40px;
+        }
+
+        /* Адаптивность для мобильных экранов */
+        @media (max-width: 900px) {
+            .main-container { grid-template-columns: 1fr; }
+            .sidebar { order: 2; }
+            .content-grid { order: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-container">
+            <div class="logo">Hentasis</div>
+            <ul class="nav-menu">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Аниме</a></li>
+                <li><a href="#">Манга</a></li>
+                <li><a href="#">Популярное</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Основной блок -->
+    <div class="main-container">
+        
+        <!-- Сетка карточек -->
+        <main class="content-grid">
+            
+            <!-- Карточка 1 -->
+            <div class="media-card">
+                <div class="poster-placeholder">
+                    <span class="card-badge">HD</span>
+                </div>
+                <div class="card-info">
+                    <div class="card-title"><a href="#">Название релиза #1</a></div>
+                    <div class="card-meta">Жанр, Год выпуска</div>
+                </div>
+            </div>
+
+            <!-- Карточка 2 -->
+            <div class="media-card">
+                <div class="poster-placeholder">
+                    <span class="card-badge">Новое</span>
+                </div>
+                <div class="card-info">
+                    <div class="card-title"><a href="#">Название релиза #2</a></div>
+                    <div class="card-meta">Жанр, Год выпуска</div>
+                </div>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="media-card">
+                <div class="poster-placeholder"></div>
+                <div class="card-info">
+                    <div class="card-title"><a href="#">Название релиза #3</a></div>
+                    <div class="card-meta">Жанр, Год выпуска</div>
+                </div>
+            </div>
+
+            <!-- Карточка 4 -->
+            <div class="media-card">
+                <div class="poster-placeholder"></div>
+                <div class="card-info">
+                    <div class="card-title"><a href="#">Название релиза #4</a></div>
+                    <div class="card-meta">Жанр, Год выпуска</div>
+                </div>
+            </div>
+
+            <!-- Навигация -->
+            <div class="pagination">
+                <div class="page-num active">1</div>
+                <div class="page-num">2</div>
+                <div class="page-num">3</div>
+                <div class="page-num">...</div>
+                <div class="page-num">15</div>
+            </div>
+
+        </main>
+
+        <!-- Сайдбар -->
+        <aside class="sidebar">
+            
+            <!-- Виджет Категорий -->
+            <div class="widget">
+                <div class="widget-title">Жанры</div>
+                <ul class="widget-list">
+                    <li><a href="#">Романтика</a> <span class="count-badge">(142)</span></li>
+                    <li><a href="#">Комедия</a> <span class="count-badge">(98)</span></li>
+                    <li><a href="#">Фэнтези</a> <span class="count-badge">(215)</span></li>
+                    <li><a href="#">Драма</a> <span class="count-badge">(64)</span></li>
+                </ul>
+            </div>
+
+            <!-- Виджет инфо -->
+            <div class="widget">
+                <div class="widget-title">О проекте</div>
+                <p style="color: #888; font-size: 13px;">Добро пожаловать на демонстрационный визуальный макет сайта. Здесь воссоздана только структура интерфейса и стили оформления.</p>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <p>© 2018 - 2026 Hentasis TOP. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>
